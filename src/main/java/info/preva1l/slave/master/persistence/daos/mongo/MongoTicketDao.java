@@ -1,13 +1,18 @@
 package info.preva1l.slave.master.persistence.daos.mongo;
 
+import com.mongodb.client.MongoClient;
 import info.preva1l.slave.master.models.tickets.Ticket;
 import info.preva1l.slave.master.persistence.Dao;
+import lombok.RequiredArgsConstructor;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@RequiredArgsConstructor
 public class MongoTicketDao implements Dao<Ticket> {
+    private final MongoClient client;
+
     /**
      * Get an object from the database by its id.
      *
