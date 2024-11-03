@@ -6,19 +6,13 @@ plugins {
 group 'info.preva1l.slave.master'
 version '1.0'
 
-repositories {
-    mavenCentral()
-}
-
 ext {
     junitVersion = '5.9.2'
+    lombokVersion = '1.18.34'
 }
 
-sourceCompatibility = '21'
-targetCompatibility = '21'
-
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
+repositories {
+    mavenCentral()
 }
 
 dependencies {
@@ -26,11 +20,35 @@ dependencies {
     compileOnly 'jakarta.security.enterprise:jakarta.security.enterprise-api:2.0.0'
     compileOnly 'jakarta.servlet:jakarta.servlet-api:5.0.0'
 
+    implementation 'de.exlll:configlib-yaml:4.5.0'
+    implementation 'org.jetbrains:annotations:24.0.0'
+    implementation 'org.projectlombok:lombok:1.18.34'
     implementation 'com.google.code.gson:gson:2.11.0'
+    implementation 'redis.clients:jedis:5.2.0'
     implementation 'org.mongodb:mongodb-driver-sync:5.2.0'
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${junitVersion}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${junitVersion}")
+    annotationProcessor 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.jetbrains:annotations:24.0.0'
+
+    testImplementation "org.junit.jupiter:junit-jupiter-api:${junitVersion}"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:${junitVersion}"
+}
+
+def javaVersion = JavaVersion.VERSION_21
+
+
+java {
+    if (JavaVersion.current() < javaVersion) {
+        toolchain.languageVersion = javaVersion
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+
+    if (javaVersion.isJava10Compatible() || JavaVersion.current().isJava10Compatible()) {
+        options.release = javaVersion.getMajorVersion() as Integer
+    }
 }
 
 test {
@@ -38,7 +56,7 @@ test {
 }
 
 war {
-    destinationDirectory.set(file("$rootDir/target"))
+    destinationDirectory = file("$rootDir/target")
 }
 
 jar.dependsOn war
