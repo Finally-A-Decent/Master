@@ -10,6 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.util.Optional;
 
 @WebServlet(name = "Project", urlPatterns = "/projects/*")
 public class ProjectServlet extends HttpServlet {
@@ -18,6 +19,7 @@ public class ProjectServlet extends HttpServlet {
         String projectShortId = request.getPathInfo().split("/")[1];
         Project project = Projects.get(projectShortId);
 
+        request.setAttribute("title", Optional.of("Test"));
         request.setAttribute("projectShortId", projectShortId);
         request.setAttribute("project", project);
 
