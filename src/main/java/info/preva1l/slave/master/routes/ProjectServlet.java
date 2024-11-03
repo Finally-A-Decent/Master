@@ -16,7 +16,6 @@ public class ProjectServlet extends HttpServlet {
     @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         String projectShortId = request.getPathInfo().split("/")[1];
-
         Project project = Projects.get(projectShortId);
 
         request.setAttribute("projectShortId", projectShortId);
