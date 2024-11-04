@@ -6,17 +6,10 @@
 <t:head title="Projects"/>
 <t:navigation currentPage="projects" />
 
-<h1>Projects list bla bla</h1>
+<h1 class="text-3xl">Projects list bla bla</h1>
 
-<div id="projects-container">
+<div id="projects-container" class="flex gap-4 flex-wrap p-12">
     <c:forEach items="${Projects.toList()}" var="project">
-        <div class="project">
-            <img src="${pageContext.request.contextPath}/content/logos/${project.getShortId()}.png" alt="Project Logo">
-            <h4 id="project-name">${project.getName()}</h4>
-            <div id="btn-container">
-                <a id="info-btn" class="project-btn">Info</a>
-                <a id="docs-btn" class="project-btn">Docs</a>
-            </div>
-        </div>
+        <t:project-card project="${project}"/>
     </c:forEach>
 </div>

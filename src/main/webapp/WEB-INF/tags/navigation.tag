@@ -17,7 +17,7 @@
             <i class="bi bi-house-fill"></i>
             Home
         </a>
-        <a class="<%= currentPage.equalsIgnoreCase("projects") ? "active" : "" %>" href="${pageContext.request.contextPath}/projects/">Projects</a>
-        <a class="<%= currentPage.equalsIgnoreCase("login") ? "active" : "" %>" href="${pageContext.request.contextPath}/login/">Login</a>
+        <a class="<%= currentPage.equalsIgnoreCase("projects") ? active : "" %>" href="${pageContext.request.contextPath}/projects/">Projects</a>
+        <a class="<%= currentPage.equalsIgnoreCase("login") ? active : "" %>" href="${pageContext.request.contextPath}/login/">Login</a>
     </div>
 </nav>
