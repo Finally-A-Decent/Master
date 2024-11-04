@@ -19,6 +19,7 @@ dependencies {
     compileOnly 'jakarta.mvc:jakarta.mvc-api:2.0.0'
     compileOnly 'jakarta.security.enterprise:jakarta.security.enterprise-api:2.0.0'
     compileOnly 'jakarta.servlet:jakarta.servlet-api:5.0.0'
+    implementation 'javax.servlet:jstl:1.2'
 
     implementation 'de.exlll:configlib-yaml:4.5.0'
     implementation 'org.jetbrains:annotations:24.0.0'

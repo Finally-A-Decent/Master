@@ -1,0 +1,77 @@
+* {box-sizing: border-box;}
+
+/* Nav Bar */
+
+nav#primary-nav a {
+    transition: 300ms ease-in-out all;
+}
+nav#primary-nav a:hover {
+    color: #2291FFFF;
+}
+
+nav#primary-nav a:first-child:hover {
+    color: #fff;
+}
+
+/* Projects */
+
+div#projects-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-gap: 1rem;
+    margin: 2em;
+}
+
+div.project {
+    width: 50px;
+    display: flex;
+    flex-flow: column;
+    border: 1px solid #eee;
+    padding: 1em;
+    &:hover{
+        border: 1px solid #fff;
+        box-shadow: 0 5px 40px rgba(0,0,0,.3);
+    }
+}
+
+div.project img {
+    width: 100%;
+    overflow: hidden;
+}
+
+div.project #project-name {
+    margin: 1em 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+div.project#btn-container {
+    display: flex;
+    margin-top: auto;
+}
+
+div.project a.project-btn {
+    cursor: pointer;
+    text-align: center;
+    font-size: 1rem;
+    padding: .8rem 2rem;
+    border: 1px solid #336699;
+    background-color: #336699;
+    color: #fff;
+    &:hover{
+        background-color: #fff;
+        color: #336699;
+    }
+}
+
+#info-btn {
+    margin-right: .5rem;
+    border-bottom-left-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+#docs-btn {
+    margin-right: .5rem;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
